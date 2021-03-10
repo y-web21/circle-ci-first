@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Library\Helper;
-use Illuminate\Support\Facades\DB;
-
+use App\Models\ViewLog;
+use App\Library\Covid19JpApi;
 class PublicPagesController extends Controller
 {
 
@@ -19,7 +19,14 @@ class PublicPagesController extends Controller
     {
         $articles = Article::Publish()->orderBy('created_at', 'desc')->offset(1)->limit(30)->get();
         $top_news = Article::Publish()->orderBy('created_at', 'desc')->first();
-        return view('public/index', compact('articles', 'top_news'));
+        $ranking = ViewLog::getRankingData();
+
+        $covid19 = new Covid19JpApi;
+        $pref_data = $covid19->setPrefecture('Aichi')->queryPrefectures()->getArray();
+        $covid19_api = $covid19->getApiInfo();
+        unset($covid19);
+
+        return view('public/index', compact('articles', 'top_news', 'ranking', 'pref_data', 'covid19_api'));
     }
 
     /**
@@ -30,7 +37,8 @@ class PublicPagesController extends Controller
      */
     public function show($id)
     {
-        return view('public/dummy', ['articles' => Article::findOrFail($id)]);
+        ViewLog::createViewLog($id, 60);
+        return view('public/show_article', ['article' => Article::findOrFail($id)]);
     }
 
     public function shou()
