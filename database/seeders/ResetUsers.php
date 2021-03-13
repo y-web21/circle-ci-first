@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use \App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ResetUsers extends Seeder
 {
@@ -17,6 +18,6 @@ class ResetUsers extends Seeder
         User::truncate();
         User::factory(1)->testUser()->create();
         User::factory(1)->vulnerablePass()->testEmail()->create();
-        User::factory(5)->vulnerablePass()->create(['password' => 'password']);
+        User::factory(5)->vulnerablePass()->create(['password' => Hash::make('password')]);
     }
 }

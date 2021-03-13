@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             UploadImageSeeder::class,
         ]);
 
-        // \App\Models\User::factory(20)->vulnerablePass()->create();
+        \App\Models\User::factory(20)->vulnerablePass()->create();
         \App\Models\Article::factory(200)->create();
     }
 }

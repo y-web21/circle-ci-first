@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Hash;
 class UserFactory extends Factory
 {
     /**
@@ -39,7 +39,7 @@ class UserFactory extends Factory
     public function vulnerablePass(): UserFactory
     {
         return $this->state([
-            'password' => 'pass',
+            'password' => Hash::make('pass'),
         ]);
     }
 
@@ -75,7 +75,7 @@ class UserFactory extends Factory
             'name' => 'test',
             'email' => 'test@test.com',
             'email_verified_at' => now(),
-            'password' => 'test',
+            'password' => Hash::make('test'),
         ]);
     }
 }
