@@ -100,6 +100,6 @@ Route::get('/faker', function () {
     exit();
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function(){
+    return redirect('/post');
 })->name('dashboard');
