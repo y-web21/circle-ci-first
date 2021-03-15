@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\facades\Mail;
 use App\Models\Article;
-use App\Library\Helper;
 use App\Models\ViewLog;
+use App\Mail\AccountManage;
+use App\Library\Helper;
 use App\Library\Covid19JpApi;
 class PublicPagesController extends Controller
 {
@@ -50,6 +52,8 @@ class PublicPagesController extends Controller
 
     public function dummy()
     {
+        Mail::to(config('mail.from.address'))
+        ->send(new AccountManage('URL'));
         return view('public/dummy');
     }
 }
