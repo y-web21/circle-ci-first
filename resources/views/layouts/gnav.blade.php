@@ -1,6 +1,7 @@
 @php
 $navList = [['HOME', '/'], ['RANKING', '/ranking'], ['ABOUT', '/about'], ['COVID-19', '/contact']];
 $navLogin = [['ユーザー登録', '/register'], ['ログイン', '/login']];
+$navLogined = [['投稿ページ', route('post.index')], [__('Profile'), route('profile.show')]];
 $currentPage = request()->path();
 if (strpos('/', $currentPage) !== false) {
     $currentPage = explode('/', $currentPage)[0];
@@ -29,22 +30,27 @@ $gnav_type = config('const.common.BLADE.GNAV');
                     @endif
                 @endforeach
             </ul>
+
             <div class="dropdown inline-block relative lg:mr-10">
-                <p class="pt-2 px-6 whitespace-nowrap inline-flex items-center">{{ Auth::check() ? Auth::user()->name : '投稿者用' }}</p>
-                <div class="dropdown-content absolute hidden">
-                    <ul class="mt-2 bg-white rounded-md border-gray-400 border px-3 w-full">
+                <p class="p-2 px-2 whitespace-nowrap minw-100px">
+                    {{ Auth::check() ? Auth::user()->name : '投稿者用' }}</p>
+                <div class="dropdown-content absolute hidden pos-left-n150pe w-100px">
+                    <ul class="px-2 pt-2 bg-white rounded-md border-gray-400 border">
                         @if (!Auth::check())
                             @foreach ($navLogin as $page)
-                                <li><a class="mb-2 pt-2 mx-auto block whitespace-no-wrap nav-focus"
+                                <li><a class="mb-2 pt-1 mx-auto block whitespace-no-wrap nav-focus"
                                         href="{{ url($page[1]) }}">{{ $page[0] }}</a></li>
                             @endforeach
                         @else
-                            <li>
-                                <form method="POST" name="form_logout" action="{{ route('logout') }}">
-                                    @csrf
-                                    <a class="mb-2 pt-2 mx-auto block whitespace-no-wrap nav-focus"
-                                        href="javascript:form_logout.submit()">ログアウト</a>
-                                </form>
+                            @foreach ($navLogined as $page)
+                                <li><a class="mb-2 pt-1 mx-auto block whitespace-no-wrap nav-focus"
+                                        href="{{ url($page[1]) }}">{{ $page[0] }}</a></li>
+                            @endforeach
+                            <form method="POST" name="form_logout" action="{{ route('logout') }}">
+                                @csrf
+                                <a class="mb-2 pt-1 mx-auto block whitespace-no-wrap nav-focus"
+                                    href="javascript:form_logout.submit()">ログアウト</a>
+                            </form>
                             </li>
                         @endif
                     </ul>
@@ -52,11 +58,6 @@ $gnav_type = config('const.common.BLADE.GNAV');
             </div>
         </div>
     </nav>
-
-
-
-
-
     @break
     @default
     {{-- global navigation less --}}
