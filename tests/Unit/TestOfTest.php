@@ -15,7 +15,7 @@ class TestOfTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        dd(env('APP_ENV'), env('DB_HOST'));
+        // dd(env('APP_ENV'), env('DB_HOST'));
     }
 
     /**
