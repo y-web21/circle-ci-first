@@ -39,7 +39,7 @@ jobs:
       # Install PHP Extension
       - run: sudo docker-php-ext-install pdo_mysql
       # Install npm
-      - run: sudo docker-php-ext-install npm
+      # - run: sudo docker-php-ext-install npm
 
       # composer インストールとキャッシュ
       # Download and cache dependencies
@@ -60,26 +60,26 @@ jobs:
             - ./vendor
 
       # yarn
-      # - restore_cache:
-      #     keys:
-      #       - node-v1-{{ checksum "package.json" }}
-      #       - node-v1-
-      # - run: yarn install
-      # - save_cache:
-      #     key: node-v1-{{ checksum "package.json" }}
-      #     paths:
-      #       - node_modules
-
-      # npm のインストールとキャッシュ
       - restore_cache:
           keys:
-            - v1-node-{{ checksum "package.json" }}
-            - v1-node-
-      - run: npm install
+            - node-v1-{{ checksum "package.json" }}
+            - node-v1-
+      - run: yarn install
       - save_cache:
-          key: v1-node-{{ checksum "package.json" }}
+          key: node-v1-{{ checksum "package.json" }}
           paths:
-            - ./node_modules
+            - node_modules
+
+      # npm のインストールとキャッシュ
+      #- restore_cache:
+      #    keys:
+      #      - v1-node-{{ checksum "package.json" }}
+      #      - v1-node-
+      #- run: npm install
+      #- save_cache:
+      #    key: v1-node-{{ checksum "package.json" }}
+      #    paths:
+      #      - ./node_modules
 
       # prepare the database
       # - run: touch storage/testing.sqlite
