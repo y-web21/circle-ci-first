@@ -31,7 +31,9 @@ jobs:
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: true
           - MYSQL_DATABASE: circle_test
-          - TEST_MSG: UCHU
+
+    environment:
+      - TEST_MSG: UCHU
 
     # 複数のプロジェクトで利用することを考慮して明示する
     working_directory: ~/-y-web21-circle-ci-first
