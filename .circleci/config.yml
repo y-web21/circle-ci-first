@@ -75,11 +75,9 @@ jobs:
             - v1-node-
       - run: npm install
       - save_cache:
-          paths:
-            - ./node_modules
           key: v1-node-{{ checksum "package.json" }}
           paths:
-            - node_modules
+            - ./node_modules
 
       # prepare the database
       # - run: touch storage/testing.sqlite
