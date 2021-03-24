@@ -109,7 +109,7 @@ jobs:
       - run:
           name: "artisan db"
           command: |
-            php artisan migrate --env circle_testing --database=media_site_testing
+            php artisan migrate --env circle_testing
       # php artisan db:seed
 
       - run:
