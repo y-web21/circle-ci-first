@@ -28,7 +28,7 @@ class PublicPagesController extends Controller
         $covid19_api = $covid19->getApiInfo();
         unset($covid19);
 
-        return view('public/index', compact('articles', 'top_news', 'ranking'));//, 'pref_data', 'covid19_api'));
+        return view('public/index', compact('articles', 'top_news', 'ranking', 'pref_data', 'covid19_api'));
     }
 
     /**
