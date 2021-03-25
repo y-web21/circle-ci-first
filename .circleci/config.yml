@@ -47,13 +47,13 @@ jobs:
       #     key: v1-node-{{ checksum "package.json" }}
       #     paths:
       #       - ./node_modules
-      - run: |
-        echo 'imo'
-        echo 'imos'
 
       # yarn
-      - run: curl -sSL "https://nodejs.org/dist/v11.10.0/node-v11.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v11.10.0-linux-x64/bin/node
-      - run: curl -o- -L https://yarnpkg.com/install.sh | bash
+      - run:
+          name: yarn
+          command: |
+            curl -sSL "https://nodejs.org/dist/v11.10.0/node-v11.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v11.10.0-linux-x64/bin/node
+            curl -o- -L https://yarnpkg.com/install.sh | bash
       - restore_cache:
           keys:
             - node-v1-{{ checksum "package.json" }}
