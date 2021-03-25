@@ -70,6 +70,6 @@ jobs:
           name: "Run PHPUnit"
           command: vendor/bin/phpunit
 
-          - run:
+      - run:
           name: "view log"
           command: tail -n 100 storage/logs/laravel.log
