@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="38" assertions="87" errors="0" warnings="0" failures="0" skipped="3" time="29.744414">
+    <testsuite name="Unit" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="1.020262">
+      <testsuite name="Tests\Unit\ExampleTest" file="/var/www/app/tests/Unit/ExampleTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.030351">
+        <testcase name="testBasicTest" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" file="/var/www/app/tests/Unit/ExampleTest.php" line="14" assertions="1" time="0.030351"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\TestOfTest" file="/var/www/app/tests/Unit/TestOfTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.989911">
+        <testcase name="test_example" class="Tests\Unit\TestOfTest" classname="Tests.Unit.TestOfTest" file="/var/www/app/tests/Unit/TestOfTest.php" line="26" assertions="1" time="0.989911"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="36" assertions="85" errors="0" warnings="0" failures="0" skipped="3" time="28.724153">
+      <testsuite name="Tests\Feature\ApiTokenPermissionsTest" file="/var/www/app/tests/Feature/ApiTokenPermissionsTest.php" tests="1" assertions="0" errors="0" warnings="0" failures="0" skipped="1" time="1.299345">
+        <testcase name="test_api_token_permissions_can_be_updated" class="Tests\Feature\ApiTokenPermissionsTest" classname="Tests.Feature.ApiTokenPermissionsTest" file="/var/www/app/tests/Feature/ApiTokenPermissionsTest.php" line="17" assertions="0" time="1.299345">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\AuthenticationTest" file="/var/www/app/tests/Feature/AuthenticationTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="1.801844">
+        <testcase name="test_login_screen_can_be_rendered" class="Tests\Feature\AuthenticationTest" classname="Tests.Feature.AuthenticationTest" file="/var/www/app/tests/Feature/AuthenticationTest.php" line="14" assertions="1" time="0.939463"/>
+        <testcase name="test_users_can_authenticate_using_the_login_screen" class="Tests\Feature\AuthenticationTest" classname="Tests.Feature.AuthenticationTest" file="/var/www/app/tests/Feature/AuthenticationTest.php" line="21" assertions="3" time="0.509096"/>
+        <testcase name="test_users_can_not_authenticate_with_invalid_password" class="Tests\Feature\AuthenticationTest" classname="Tests.Feature.AuthenticationTest" file="/var/www/app/tests/Feature/AuthenticationTest.php" line="34" assertions="1" time="0.353285"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\BrowserSessionsTest" file="/var/www/app/tests/Feature/BrowserSessionsTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="1.182526">
+        <testcase name="test_other_browser_sessions_can_be_logged_out" class="Tests\Feature\BrowserSessionsTest" classname="Tests.Feature.BrowserSessionsTest" file="/var/www/app/tests/Feature/BrowserSessionsTest.php" line="15" assertions="1" time="1.182526"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\CreateApiTokenTest" file="/var/www/app/tests/Feature/CreateApiTokenTest.php" tests="1" assertions="0" errors="0" warnings="0" failures="0" skipped="1" time="0.243532">
+        <testcase name="test_api_tokens_can_be_created" class="Tests\Feature\CreateApiTokenTest" classname="Tests.Feature.CreateApiTokenTest" file="/var/www/app/tests/Feature/CreateApiTokenTest.php" line="16" assertions="0" time="0.243532">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\DeleteAccountTest" file="/var/www/app/tests/Feature/DeleteAccountTest.php" tests="2" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="1.521388">
+        <testcase name="test_user_accounts_can_be_deleted" class="Tests\Feature\DeleteAccountTest" classname="Tests.Feature.DeleteAccountTest" file="/var/www/app/tests/Feature/DeleteAccountTest.php" line="16" assertions="2" time="0.744889"/>
+        <testcase name="test_correct_password_must_be_provided_before_account_can_be_deleted" class="Tests\Feature\DeleteAccountTest" classname="Tests.Feature.DeleteAccountTest" file="/var/www/app/tests/Feature/DeleteAccountTest.php" line="31" assertions="4" time="0.776498"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\DeleteApiTokenTest" file="/var/www/app/tests/Feature/DeleteApiTokenTest.php" tests="1" assertions="0" errors="0" warnings="0" failures="0" skipped="1" time="0.226346">
+        <testcase name="test_api_tokens_can_be_deleted" class="Tests\Feature\DeleteApiTokenTest" classname="Tests.Feature.DeleteApiTokenTest" file="/var/www/app/tests/Feature/DeleteApiTokenTest.php" line="17" assertions="0" time="0.226346">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\EmailVerificationTest" file="/var/www/app/tests/Feature/EmailVerificationTest.php" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="1.036785">
+        <testcase name="test_email_verification_screen_can_be_rendered" class="Tests\Feature\EmailVerificationTest" classname="Tests.Feature.EmailVerificationTest" file="/var/www/app/tests/Feature/EmailVerificationTest.php" line="18" assertions="1" time="0.403482"/>
+        <testcase name="test_email_can_be_verified" class="Tests\Feature\EmailVerificationTest" classname="Tests.Feature.EmailVerificationTest" file="/var/www/app/tests/Feature/EmailVerificationTest.php" line="33" assertions="4" time="0.289307"/>
+        <testcase name="test_email_can_not_verified_with_invalid_hash" class="Tests\Feature\EmailVerificationTest" classname="Tests.Feature.EmailVerificationTest" file="/var/www/app/tests/Feature/EmailVerificationTest.php" line="59" assertions="1" time="0.343996"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ExampleTest" file="/var/www/app/tests/Feature/ExampleTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.741712">
+        <testcase name="testBasicTest" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" file="/var/www/app/tests/Feature/ExampleTest.php" line="15" assertions="1" time="0.741712"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\PasswordConfirmationTest" file="/var/www/app/tests/Feature/PasswordConfirmationTest.php" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="1.154605">
+        <testcase name="test_confirm_password_screen_can_be_rendered" class="Tests\Feature\PasswordConfirmationTest" classname="Tests.Feature.PasswordConfirmationTest" file="/var/www/app/tests/Feature/PasswordConfirmationTest.php" line="14" assertions="1" time="0.477667"/>
+        <testcase name="test_password_can_be_confirmed" class="Tests\Feature\PasswordConfirmationTest" classname="Tests.Feature.PasswordConfirmationTest" file="/var/www/app/tests/Feature/PasswordConfirmationTest.php" line="25" assertions="2" time="0.337778"/>
+        <testcase name="test_password_is_not_confirmed_with_invalid_password" class="Tests\Feature\PasswordConfirmationTest" classname="Tests.Feature.PasswordConfirmationTest" file="/var/www/app/tests/Feature/PasswordConfirmationTest.php" line="37" assertions="1" time="0.339160"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\PasswordResetTest" file="/var/www/app/tests/Feature/PasswordResetTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="2.530822">
+        <testcase name="test_reset_password_link_screen_can_be_rendered" class="Tests\Feature\PasswordResetTest" classname="Tests.Feature.PasswordResetTest" file="/var/www/app/tests/Feature/PasswordResetTest.php" line="15" assertions="1" time="0.471306"/>
+        <testcase name="test_reset_password_link_can_be_requested" class="Tests\Feature\PasswordResetTest" classname="Tests.Feature.PasswordResetTest" file="/var/www/app/tests/Feature/PasswordResetTest.php" line="22" assertions="1" time="1.074559"/>
+        <testcase name="test_reset_password_screen_can_be_rendered" class="Tests\Feature\PasswordResetTest" classname="Tests.Feature.PasswordResetTest" file="/var/www/app/tests/Feature/PasswordResetTest.php" line="35" assertions="2" time="0.614995"/>
+        <testcase name="test_password_can_be_reset_with_valid_token" class="Tests\Feature\PasswordResetTest" classname="Tests.Feature.PasswordResetTest" file="/var/www/app/tests/Feature/PasswordResetTest.php" line="54" assertions="2" time="0.369962"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\PosterPagesControllerTest" file="/var/www/app/tests/Feature/PosterPagesControllerTest.php" tests="6" assertions="27" errors="0" warnings="0" failures="0" skipped="0" time="5.978394">
+        <testcase name="test_index" class="Tests\Feature\PosterPagesControllerTest" classname="Tests.Feature.PosterPagesControllerTest" file="/var/www/app/tests/Feature/PosterPagesControllerTest.php" line="34" assertions="4" time="1.231732"/>
+        <testcase name="test_create" class="Tests\Feature\PosterPagesControllerTest" classname="Tests.Feature.PosterPagesControllerTest" file="/var/www/app/tests/Feature/PosterPagesControllerTest.php" line="47" assertions="7" time="1.238999"/>
+        <testcase name="test_store" class="Tests\Feature\PosterPagesControllerTest" classname="Tests.Feature.PosterPagesControllerTest" file="/var/www/app/tests/Feature/PosterPagesControllerTest.php" line="66" assertions="5" time="1.250280"/>
+        <testcase name="test_edit" class="Tests\Feature\PosterPagesControllerTest" classname="Tests.Feature.PosterPagesControllerTest" file="/var/www/app/tests/Feature/PosterPagesControllerTest.php" line="96" assertions="5" time="1.178595"/>
+        <testcase name="test_update" class="Tests\Feature\PosterPagesControllerTest" classname="Tests.Feature.PosterPagesControllerTest" file="/var/www/app/tests/Feature/PosterPagesControllerTest.php" line="113" assertions="3" time="0.553971"/>
+        <testcase name="test_destroy" class="Tests\Feature\PosterPagesControllerTest" classname="Tests.Feature.PosterPagesControllerTest" file="/var/www/app/tests/Feature/PosterPagesControllerTest.php" line="137" assertions="3" time="0.524818"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ProfileInformationTest" file="/var/www/app/tests/Feature/ProfileInformationTest.php" tests="2" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="3.206160">
+        <testcase name="test_current_profile_information_is_available" class="Tests\Feature\ProfileInformationTest" classname="Tests.Feature.ProfileInformationTest" file="/var/www/app/tests/Feature/ProfileInformationTest.php" line="15" assertions="3" time="0.919880"/>
+        <testcase name="test_profile_information_can_be_updated" class="Tests\Feature\ProfileInformationTest" classname="Tests.Feature.ProfileInformationTest" file="/var/www/app/tests/Feature/ProfileInformationTest.php" line="25" assertions="3" time="2.286281"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\RegistrationTest" file="/var/www/app/tests/Feature/RegistrationTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="1.157689">
+        <testcase name="test_registration_screen_can_be_rendered" class="Tests\Feature\RegistrationTest" classname="Tests.Feature.RegistrationTest" file="/var/www/app/tests/Feature/RegistrationTest.php" line="14" assertions="1" time="0.742661"/>
+        <testcase name="test_new_users_can_register" class="Tests\Feature\RegistrationTest" classname="Tests.Feature.RegistrationTest" file="/var/www/app/tests/Feature/RegistrationTest.php" line="21" assertions="3" time="0.415028"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\TwoFactorAuthenticationSettingsTest" file="/var/www/app/tests/Feature/TwoFactorAuthenticationSettingsTest.php" tests="3" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="4.062722">
+        <testcase name="test_two_factor_authentication_can_be_enabled" class="Tests\Feature\TwoFactorAuthenticationSettingsTest" classname="Tests.Feature.TwoFactorAuthenticationSettingsTest" file="/var/www/app/tests/Feature/TwoFactorAuthenticationSettingsTest.php" line="15" assertions="3" time="1.238177"/>
+        <testcase name="test_recovery_codes_can_be_regenerated" class="Tests\Feature\TwoFactorAuthenticationSettingsTest" classname="Tests.Feature.TwoFactorAuthenticationSettingsTest" file="/var/www/app/tests/Feature/TwoFactorAuthenticationSettingsTest.php" line="30" assertions="3" time="1.647062"/>
+        <testcase name="test_two_factor_authentication_can_be_disabled" class="Tests\Feature\TwoFactorAuthenticationSettingsTest" classname="Tests.Feature.TwoFactorAuthenticationSettingsTest" file="/var/www/app/tests/Feature/TwoFactorAuthenticationSettingsTest.php" line="48" assertions="3" time="1.177483"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\UpdatePasswordTest" file="/var/www/app/tests/Feature/UpdatePasswordTest.php" tests="3" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="2.580282">
+        <testcase name="test_password_can_be_updated" class="Tests\Feature\UpdatePasswordTest" classname="Tests.Feature.UpdatePasswordTest" file="/var/www/app/tests/Feature/UpdatePasswordTest.php" line="16" assertions="2" time="0.819972"/>
+        <testcase name="test_current_password_must_be_correct" class="Tests\Feature\UpdatePasswordTest" classname="Tests.Feature.UpdatePasswordTest" file="/var/www/app/tests/Feature/UpdatePasswordTest.php" line="31" assertions="4" time="0.882387"/>
+        <testcase name="test_new_passwords_must_match" class="Tests\Feature\UpdatePasswordTest" classname="Tests.Feature.UpdatePasswordTest" file="/var/www/app/tests/Feature/UpdatePasswordTest.php" line="47" assertions="4" time="0.877924"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
