@@ -69,11 +69,10 @@ jobs:
       - run:
           name: "Run PHPUnit"
           command: |
-            vendor/bin/phpunit --log-junit phpunit.xml || echo "export TEST_RESULT=${?}" >> $BASH_ENV
+            vendor/bin/phpunit --log-junit phpunit.xml
 
-      - run: echo $BASH_ENV
       - run:
-          name: "view log"
-          command: |
+          name: "view test log"
+          command:
             tail -n 100 storage/logs/laravel.log
-            env
+          when: always
