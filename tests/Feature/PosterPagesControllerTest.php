@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\UploadImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 
 class PosterPagesControllerTest extends TestCase
@@ -26,6 +27,8 @@ class PosterPagesControllerTest extends TestCase
         $this->article = Article::factory()->create();
         $this->user = User::factory()->create();
         Auth::login($this->user);
+        // prevent csrf token error
+        // $this->withoutMiddleware();
     }
 
     public function test_index()
@@ -135,7 +138,12 @@ class PosterPagesControllerTest extends TestCase
     {
         $record = Article::factory()->create();
         $response = $this->delete(route('post.destroy', ['post' => $record->id]));
+        // echo($this->poster_home);
         $response->assertRedirect($this->poster_home);
         $this->assertDeleted($record);
+        // var_dump($response->dump());
+        //         ->from('posts') //追加
+        // ->post('post/create', [
+
     }
 }

@@ -6,101 +6,67 @@ version: 2
 jobs:
   build:
     docker:
-      # Specify the version you desire here
-      - image: circleci/php:7.4.16-fpm-buster
+      - image: circleci/php:7.4.16-fpm-buster # Debian GNU/Linux 10 (buster)
+        environment:
+          - APP_DEBUG: true
+          - APP_ENV: testing
+          - DB_CONNECTION: mysql_circle_testing
+
       - image: circleci/mysql:5.7.33
+        environment:
+          - MYSQL_ALLOW_EMPTY_PASSWORD: true
+          - MYSQL_DATABASE: circle_test
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
-      #
-      # - image: redis:2.8.19
-
-    environment:
-      - APP_DEBUG: true
-      # .env.testingを使用
-      - APP_ENV: testing
-      - APP_KEY: base64:hvoPr0CX0tbk04SuMyZ1cRZNpwQUzCAtD9fcev1tiyA= #不要かも
-      # config/database.php $connections['circle_testing']を使用
-      - DB_CONNECTION: circle_test
-      - MYSQL_ALLOW_EMPTY_PASSWORD: true
-
-    # 複数のプロジェクトで利用することを考慮して明示する
-    working_directory: ~/-y-web21-circle-ci-first
+    working_directory: ~/application
 
     steps:
-      - checkout # git cloneっぽい
+      - checkout
 
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
       # Install PHP Extension
       - run: sudo docker-php-ext-install pdo_mysql
 
+      # npm
       - run:
           name: "Node.js と npm の更新"
           command: |
             curl -sSL "https://nodejs.org/dist/v11.10.0/node-v11.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v11.10.0-linux-x64/bin/node
             curl https://www.npmjs.com/install.sh | sudo bash
       - run:
-          name: 現行バージョンのノードのチェック
-          command: node -v
+          name: "node -v npm -v"
+          command: |
+            node -v
+            npm -v
+      - restore_cache:
+          keys:
+            - v1-node-{{ checksum "package.json" }}
+            - v1-node-
+      - run: npm install
+      - save_cache:
+          key: v1-node-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
 
-
-      # composer インストールとキャッシュ
-      # Download and cache dependencies
+      # composer Download and cache dependencies
       - restore_cache:
           keys:
             # "composer.lock" can be used if it is committed to the repo
             - v1-dependencies-{{ checksum "composer.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
-      # -n メッセージ無効 --prefer-dist 圧縮ファイルダウンロード
       - run: composer install -n --prefer-dist
-
-      # キャッシュを生成
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
 
-      # yarn i と キャッシュ
-      # - restore_cache:
-      #     keys:
-      #       - node-v1-{{ checksum "package.json" }}
-      #       - node-v1-
-      # - run: yarn install
-      # - save_cache:
-      #     key: node-v1-{{ checksum "package.json" }}
-      #     paths:
-      #       - node_modules
-
-      # npm i と キャッシュ
-      - restore_cache:
-         keys:
-           - v1-node-{{ checksum "package.json" }}
-           - v1-node-
-      - run: npm install
-      - save_cache:
-         key: v1-node-{{ checksum "package.json" }}
-         paths:
-           - ./node_modules
-
-      # prepare the database
-      # - run: touch storage/testing.sqlite
-      # - run: php artisan migrate --env=testing --database=sqlite_testing --force
-
-
-      # run seeding
-      - run: php artisan migrate
-      - run: php artisan db:seed
-
-      # run tests with phpunit or codecept
       - run:
-          name: Run PHPUnit
-          command: vendor/bin/phpunit
-      # - run: ./vendor/bin/codecept build
-      # - run: ./vendor/bin/codecept run
+          name: "artisan db"
+          command: |
+            php artisan migrate
+
+      - run:
+          name: "Run PHPUnit"
+          command: |
+            vendor/bin/phpunit

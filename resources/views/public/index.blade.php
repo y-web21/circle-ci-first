@@ -43,6 +43,7 @@
                 </div>
                 <div
                     class="lg:col-span-1 bg-white border-2 border-gray-300 rounded-md tracking-wide shadow-md p-4 mt-10 lg:mt-0 h-100per">
+                    @if (isset($pref_data))
                     <div class="flex flex-col px-3 h-100per">
                         <h3 class="text-xl font-semibold overflow-hidden">COVID-19情報({{ $pref_data['name_ja'] }})</h3>
                         <div class="flex justify-around text-gray-800 overflow-hidden">
@@ -69,6 +70,12 @@
                         <a class="text-xs ml-auto mt-1 hover:opacity-60"
                             href="{{ $covid19_api['poweredByUrl'] }}">powered by {{ $covid19_api['poweredBy'] }}</a>
                     </div>
+                    @else
+                    <div class="flex flex-col px-3 h-100per">
+                        <h3 class="text-xl font-semibold overflow-hidden">COVID-19情報</h3>
+                        <p class="text-sm ml-auto mt-auto pt-4">(データが取得できませんでした)</p>
+                    </div>
+                    @endif
                 </div>
             </section>
 

@@ -434,7 +434,7 @@ class Covid19JpApi
     {
         if (!file_exists($dir . $filename)) {
             if (!file_exists($dir)) {
-                mkdir($dir, 0644, true);
+                mkdir($dir, 0775, true);
             }
         }
         // open with exclusive lock
@@ -445,7 +445,7 @@ class Covid19JpApi
     {
         if (!file_exists($dir . $filename)) {
             if (!file_exists($dir)) {
-                mkdir($dir, 0644, true);
+                mkdir($dir, 0775, true);
             }
         }
         // open with exclusive lock
