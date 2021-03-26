@@ -88,7 +88,7 @@ jobs:
       - run:
           name: "Run PHPUnit"
           command: |
-            vendor/bin/phpunit --log-junit phpunit.xml -v tests/Feature/ExampleTest.php
+            vendor/bin/phpunit --log-junit phpunit.xml
 
       - run:
           name: "view test log"
