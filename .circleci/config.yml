@@ -92,7 +92,7 @@ jobs:
 
       - run:
           name: "view test log"
-          command: tail -n 100 storage/logs/laravel.log
+          command: tail -n 100 ./storage/logs/laravel.log
           when: always
 
       - run:
